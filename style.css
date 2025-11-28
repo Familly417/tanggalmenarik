@@ -1,0 +1,80 @@
+#welcome-screen {
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0;
+  background: linear-gradient(135deg, #8a2be2, #ff69b4);
+  z-index: 1050;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s ease;
+}
+
+body {
+    background: linear-gradient(135deg, #c71585, #ffb6c1);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    /* HAPUS overflow: hidden AGAR BISA SCROLL */
+    min-height: 100vh;
+}
+
+/* Pola bintang imut untuk kesan menarik */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: twinkle 3s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Falling emojis */
+.falling-emoji {
+    position: fixed; /* Ganti dari absolute ke fixed */
+    top: -50px;
+    font-size: 24px;
+    animation: fall 5s linear infinite;
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 2;
+}
+
+@keyframes fall {
+    0% { 
+        transform: translateY(-100px) rotate(0deg); 
+    }
+    100% { 
+        transform: translateY(100vh) rotate(360deg); 
+    }
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    z-index: 3;
+}
+
+.birthday-card {
+    max-width: 600px;
+    margin: 50px auto;
+    position: relative;
+    z-index: 3;
+}

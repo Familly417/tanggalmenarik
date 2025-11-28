@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucapan Ulang Tahun - John Doe</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <style>
+        #main-content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+   <!-- Welcome Screen -->
+   <div id="welcome-screen" class="container-fluid text-light">
+     <div class="text-center">
+       <h1 class="display-4 fw-bold">Well Hello There Babe!</h1>
+       <p class="lead">U Know What It Is</p>
+       <p style="text-underline-offset: 2px;">29/11/2025</p>
+     </div>
+   </div>
+
+   <!-- Main Content -->
+   <div id="main-content">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container-sm">
+            <h1 class="display-4 text-white" data-aos="fade-up">Selamat Ulang Tahun Sayang~</h1>
+            <p class="lead text-white" data-aos="fade-up" data-aos-delay="200">Happy birthday~ pertama tama kamu scroll kebawah dulu!! udah ke unlock? baru bagian bawah ini kamu isi terus pencet "secret" biar sesuatu kebuka ya~</p>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="password-input" placeholder="Makanan First Date kita?" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary bg-light" type="button" id="button-addon2" onclick="checkPassword()">Secret</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Birthday Message Section -->
+    <section class="container-sm birthday-card">
+         <div class="card shadow" data-aos="slide-up" style="background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);">
+            <div class="card-body">
+                <h5 class="card-title">Birthday Message from ur bebehh!</h5>
+                <p class="card-text">
+                    Selamat ulang tahun sayang~ ini pertama kalinya aku ngerayain ulang tahun buat kamu.. jadi aku harus ngasih impression bagus!!! wkwkwk.. dah gitu aja jokesnya.. kita fokus ke pesan buat kamu~</p>
+                <p>Semoga impian kamu tercapai dan kamu bisa bahagia terus~ kalau kamu gak lahir dan terus hidup begini mana bisa aku juga bahagia wkwkw tenkyu udah semangat sehari hari~ semoga kamu sehat terus, selalu jaga kesehatan ya~ aku nantiin perkembangan di hidup kamu di ulang tahun kamu yang ke 18 ini! aku temenin kamu terus!! Happy Birthday Sayanggg!
+                </p>
+                <img src="Background.png" alt="Gambar Ulang Tahun" class="img-fluid rounded" data-aos="fade-in" data-aos-delay="300">
+            </div>
+        </div>
+    </section>
+   </div>
+   <!-- End of Main Content -->
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    AOS.init();
+
+    setTimeout(() => {
+        const welcome = document.getElementById('welcome-screen');
+        welcome.style.opacity = '0';
+        welcome.style.transition = 'opacity 0.8s ease';
+        setTimeout(() => {
+            welcome.style.display = 'none';
+            const main = document.getElementById('main-content');
+            main.style.display = 'block';
+            AOS.refresh();
+            startEmojiFall();
+        }, 800);
+    }, 3000);
+
+    function checkPassword() {
+        const correctPassword = "sushi";
+        const userPassword = document.getElementById('password-input').value;
+        
+        if (userPassword.toLowerCase() === correctPassword.toLowerCase()) {
+            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        } else {
+            alert("kamu gk inget? sumpah aku sakit hati!! padahal ini momen berharga kitaaa!! [btw kecil semua hurufnya kalau salah wkwk]");
+            document.getElementById('password-input').value = "";
+        }
+    }
+
+    function createFallingEmoji() {
+        const emojis = ['🎉', '🎂', '🎁', '🥳', '❤️', '🎈', '✨', '💫'];
+        const emoji = document.createElement('div');
+        emoji.classList.add('falling-emoji');
+        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        
+        emoji.style.left = Math.random() * 100 + 'vw';
+        
+        const duration = 5 + Math.random() * 5;
+        emoji.style.animationDuration = duration + 's';
+        
+        const size = 20 + Math.random() * 20;
+        emoji.style.fontSize = size + 'px';
+        
+        document.body.appendChild(emoji);
+        
+        setTimeout(() => {
+            emoji.remove();
+        }, duration * 1000);
+    }
+
+    function startEmojiFall() {
+        for (let i = 0; i < 20; i++) {
+            setTimeout(() => {
+                createFallingEmoji();
+            }, i * 500);
+        }
+        
+        setInterval(createFallingEmoji, 600);
+    }
+    </script>
+</body>
+</html>
